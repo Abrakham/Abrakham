@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080d16">
+<meta name="description" content="Abrakham A — ADAS Software Test Engineer focused on active safety validation, SIL automation, and automotive software quality.">
+<title>Abrakham A — ADAS Software Test Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#080d16;--panel:#101827;--panel2:#131e2e;--line:#253247;--text:#edf3fb;
+ --muted:#9aa9bd;--teal:#6ee7d2;--blue:#8bc7ff;--max:1160px;
+ --sans:"DM Sans",system-ui,sans-serif;--display:"Space Grotesk",system-ui,sans-serif
+}
+*,*:before,*:after{box-sizing:border-box}
+html{width:100%;overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:86px}
+body{margin:0;width:100%;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-inline:clamp(18px,4vw,34px)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.035em}
+section{padding-block:clamp(68px,9vw,108px);scroll-margin-top:80px}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.kicker:before{content:"";width:22px;height:1px;background:var(--teal)}
+.section-head{max-width:720px;margin-bottom:36px}
+.section-head h2{margin-top:14px;font-size:clamp(30px,4vw,46px)}
+.section-head p{margin-top:15px;color:var(--muted);max-width:65ch}
+header{position:sticky;top:0;z-index:20;background:rgba(8,13,22,.82);border-bottom:1px solid rgba(37,50,71,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;letter-spacing:-.02em}
+.logo-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;background:var(--teal);color:#07121a;font-size:13px}
+.navlinks{display:flex;align-items:center;gap:clamp(12px,2.5vw,28px)}
+.navlinks a{font-size:13px;color:var(--muted);transition:color .2s}
+.navlinks a:hover{color:var(--text)}
+.navlinks .nav-contact{padding:8px 14px;border:1px solid #426c70;border-radius:7px;color:var(--teal)}
+.hero{position:relative;padding-top:clamp(48px,7vw,88px);padding-bottom:56px}
+.hero:before{content:"";position:absolute;inset:0 auto auto 10%;width:min(700px,80vw);height:500px;background:radial-gradient(ellipse at top,rgba(63,183,177,.13),transparent 68%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 235px;align-items:center;gap:clamp(24px,4vw,56px)}
+.hero-copy{min-width:0}
+.availability{display:inline-flex;align-items:center;gap:9px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(16,24,39,.8);color:#b9c8d8;font-size:12px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(110,231,210,.1)}
+.hero-overline{margin-top:25px;color:var(--muted);font-size:12px;letter-spacing:.13em;text-transform:uppercase}
+h1{margin-top:15px;max-width:14ch;font-size:clamp(42px,6vw,74px);font-weight:700;line-height:1.02}
+.accent{color:var(--teal)}
+.hero-summary{max-width:61ch;margin-top:23px;color:#b0bdce;font-size:clamp(15px,1.6vw,18px);line-height:1.8}
+.hero-summary strong{color:var(--text);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:29px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:45px;padding:11px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);font-size:13px;font-weight:700;transition:transform .2s,border-color .2s,background .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--teal)}
+.btn-primary{background:var(--teal);border-color:var(--teal);color:#07151a}
+.btn-primary:hover{background:#8af0df}
+.portrait-area{position:relative;width:100%;max-width:218px;justify-self:end;margin:0;padding:18px 10px 18px 0;isolation:isolate}
+.portrait-area::before{content:"";position:absolute;z-index:-1;top:0;left:-18px;width:78%;height:72%;border-radius:3px;background:linear-gradient(145deg,#625bff,#4057d8)}
+.portrait-card{position:relative;padding:8px;border:1px solid rgba(255,255,255,.85);border-radius:3px;background:#f5f7fb;box-shadow:0 18px 42px rgba(0,0,0,.32)}
+.portrait{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 23%;border-radius:1px;background:#172131}
+.portrait-caption{display:none}
+.portrait-caption:before,.portrait-caption:after{content:"";width:18px;height:1px;background:#426c70}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:52px}
+.metric{padding:20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,rgba(19,30,46,.9),rgba(12,18,29,.9))}
+.metric-value{display:block;color:var(--teal);font-family:var(--display);font-size:clamp(25px,3vw,36px);font-weight:700;line-height:1.2}
+.metric-label{display:block;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.45}
+.about-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,74px)}
+.about-text{display:flex;flex-direction:column;gap:17px;color:var(--muted)}
+.about-text strong{color:var(--text)}
+.focus-list{display:grid;gap:10px;margin-top:8px}
+.focus-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.focus-icon{color:var(--teal);font-size:14px;line-height:1.7}
+.focus-item span:last-child{color:#c1ccda;font-size:13px}
+.skills{display:grid;gap:19px}
+.skill-group h3{margin-bottom:10px;color:var(--muted);font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:#111a28;color:#d5deea;font-size:12px;transition:border-color .2s,color .2s}
+.tag:hover{border-color:var(--teal);color:var(--teal)}
+.projects{background:linear-gradient(180deg,transparent,rgba(16,24,39,.45),transparent)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.project{display:flex;flex-direction:column;min-width:0;padding:24px;border:1px solid var(--line);border-radius:13px;background:var(--panel);transition:transform .22s,border-color .22s,box-shadow .22s}
+.project:hover{transform:translateY(-4px);border-color:rgba(110,231,210,.45);box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.project-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.project-index{color:#64758b;font-size:11px;letter-spacing:.12em}
+.project-metric{color:var(--teal);font-family:var(--display);font-size:34px;font-weight:700;letter-spacing:-.04em}
+.project h3{margin-top:19px;font-size:20px}
+.project p{margin-top:11px;color:var(--muted);font-size:13px;line-height:1.75}
+.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:20px}
+.project-tags span{padding:4px 8px;border:1px solid #29364a;border-radius:5px;color:#9eafc3;font-size:10px}
+.project-note{margin-top:18px;color:#7f90a6;font-size:12px}
+.timeline{position:relative;display:grid;gap:15px;padding-left:25px}
+.timeline:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--teal),#27364a)}
+.experience-card{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.experience-card:before{content:"";position:absolute;left:-25px;top:25px;width:11px;height:11px;border:2px solid var(--teal);border-radius:50%;background:var(--bg)}
+.role-toggle{display:flex;width:100%;align-items:flex-start;justify-content:space-between;gap:18px;padding:21px 22px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
+.role-title{font-family:var(--display);font-size:18px;font-weight:600}
+.role-company{display:block;margin-top:6px;color:var(--muted);font-size:13px}
+.role-date{flex:0 0 auto;color:var(--teal);font-size:11px;white-space:nowrap}
+.chevron{display:inline-block;margin-left:8px;transition:transform .2s}
+.role-toggle[aria-expanded="false"] .chevron{transform:rotate(-90deg)}
+.role-content{padding:0 22px 22px}
+.role-content ul{display:grid;gap:9px;margin:0;padding-left:18px;color:var(--muted);font-size:13px}
+.role-content li::marker{color:var(--teal)}
+.role-content strong{color:var(--text)}
+.credentials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:35px}
+.credential{padding:20px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+.credential h3{margin-bottom:12px;color:var(--teal);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.credential p,.credential li{color:var(--muted);font-size:12px;line-height:1.7}
+.credential strong{color:var(--text)}
+.credential ul{display:grid;gap:8px;margin:0;padding-left:16px}
+.contact-card{position:relative;overflow:hidden;padding:clamp(26px,5vw,56px);border:1px solid #2b4554;border-radius:18px;background:radial-gradient(ellipse at 90% 0%,rgba(110,231,210,.12),transparent 55%),#101827}
+.contact-card h2{max-width:16ch;margin-top:14px;font-size:clamp(32px,5vw,54px)}
+.contact-card>p{max-width:60ch;margin-top:16px;color:var(--muted)}
+.contact-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:25px}
+.email-line{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.email{max-width:100%;padding:10px 13px;border:1px solid var(--line);border-radius:7px;background:#080d16;font-size:13px;overflow-wrap:anywhere}
+.copy{cursor:pointer}
+.copy.copied{border-color:var(--teal);color:var(--teal)}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:55px;padding:25px 0 35px;border-top:1px solid var(--line);color:#78889e;font-size:11px}
+@media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) 205px;gap:24px}.portrait-area{max-width:190px}.about-grid{grid-template-columns:1fr}.credentials{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.portrait-area{max-width:190px;justify-self:center;margin-top:6px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.hero h1{max-width:17ch}}
+@media(max-width:640px){.portrait-area{max-width:175px}.nav{min-height:64px}.navlinks{gap:12px}.navlinks a:not(.nav-contact){display:none}.navlinks .nav-contact{padding:7px 11px;font-size:12px}.hero{padding-top:42px}.hero h1{font-size:clamp(40px,10vw,56px)}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}.project-grid{grid-template-columns:1fr}.role-toggle{flex-direction:column;gap:9px}.role-date{white-space:normal}.credentials{grid-template-columns:1fr}.timeline{padding-left:22px}.experience-card:before{left:-22px}}
+@media(max-width:420px){.metrics{grid-template-columns:1fr}.metric{display:flex;align-items:center;justify-content:space-between;gap:12px}.metric-label{max-width:48%;margin-top:0;text-align:right}.project{padding:20px}.email-line{align-items:stretch;flex-direction:column}.email-line .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Abrakham A home"><span class="logo-mark">A.</span><span>Abrakham A</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a class="nav-contact" href="#contact">Let’s connect ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="availability"><span class="live-dot"></span> ADAS · ACTIVE SAFETY · VALIDATION</div>
+      <p class="hero-overline">Software Test Engineer / Bengaluru, India</p>
+      <h1>Building confidence in <span class="accent">every drive.</span></h1>
+      <p class="hero-summary">
+        I’m <strong>Abrakham A</strong>, an ADAS Software Test Engineer working at the intersection
+        of active safety, test automation, and automotive software quality. I turn requirements
+        into repeatable tests, investigate complex failures, and help engineering teams deliver
+        dependable driver-assistance features.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">Explore selected work ↗</a>
+        <a class="btn" href="#experience">Career experience</a>
+        <a class="btn" href="Abrakham_A_Resume.pdf" target="_blank" rel="noopener">View resume PDF ↗</a>
+      </div>
+    </div>
+    <figure class="portrait-area">
+      <div class="portrait-card">
+        <img class="portrait" src="photo.png" alt="Professional portrait of Abrakham A" width="800" height="800" fetchpriority="high">
+      </div>
+      <figcaption class="portrait-caption">ADAS · Active Safety</figcaption>
+    </figure>
+  </div>
+
+  <div class="metrics" aria-label="Selected career impact">
+    <div class="metric"><span class="metric-value" data-count="2000" data-suffix="+">2,000+</span><span class="metric-label">SIL test scripts created and executed</span></div>
+    <div class="metric"><span class="metric-value" data-count="75" data-suffix="%">75%</span><span class="metric-label">Reduction in script-creation effort</span></div>
+    <div class="metric"><span class="metric-value" data-count="1200" data-suffix="+">1,200+</span><span class="metric-label">ADAS defects analyzed</span></div>
+    <div class="metric"><span class="metric-value">55 → 100%</span><span class="metric-label">Unit test coverage improvement</span></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head"><span class="kicker">01 / About</span><h2>Thoughtful testing. Measurable impact.</h2><p>My work is centered on making safety-critical software easier to verify, easier to diagnose, and more reliable to release.</p></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I work on <strong>ADAS active safety validation</strong> for General Motors through Tata Consultancy Services, with experience spanning SIL test automation, unit testing, vehicle-data analysis, and defect investigation.</p>
+      <p>I enjoy bridging the gap between requirements and software behavior: designing meaningful test scenarios, analyzing network signals, and collaborating with developers to close issues with clear evidence.</p>
+      <div class="focus-list">
+        <div class="focus-item"><span class="focus-icon">↗</span><span><strong>Validation mindset</strong><br>Requirement-based testing, traceability, regression, and evidence.</span></div>
+        <div class="focus-item"><span class="focus-icon">⌘</span><span><strong>Automation mindset</strong><br>Python tooling and reusable workflows that reduce repetitive effort.</span></div>
+        <div class="focus-item"><span class="focus-icon">◎</span><span><strong>Safety mindset</strong><br>Structured verification aligned with automotive safety practices.</span></div>
+      </div>
+    </div>
+    <div class="skills">
+      <div class="skill-group"><h3>ADAS & Functional Safety</h3><div class="tags"><span class="tag">AEB</span><span class="tag">ACC</span><span class="tag">LKA</span><span class="tag">LCC</span><span class="tag">FCA</span><span class="tag">CIB</span><span class="tag">EBA</span><span class="tag">TSA</span><span class="tag">ISO 26262</span><span class="tag">ASIL</span></div></div>
+      <div class="skill-group"><h3>Test & Automation</h3><div class="tags"><span class="tag">Python</span><span class="tag">SIL</span><span class="tag">YAML</span><span class="tag">Regression Testing</span><span class="tag">Unit Testing</span><span class="tag">Traceability</span></div></div>
+      <div class="skill-group"><h3>Simulation & Validation</h3><div class="tags"><span class="tag">Applied Intuition</span><span class="tag">CarMaker</span><span class="tag">CarSim</span><span class="tag">RoadRunner</span><span class="tag">HIL Test Cases</span></div></div>
+      <div class="skill-group"><h3>Embedded & Diagnostics</h3><div class="tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Embedded C</span><span class="tag">MISRA-C</span><span class="tag">AUTOSAR Classic</span><span class="tag">UDS</span></div></div>
+      <div class="skill-group"><h3>Vehicle Networks & Tools</h3><div class="tags"><span class="tag">CAN</span><span class="tag">CAN-FD</span><span class="tag">CAN-TP</span><span class="tag">LIN</span><span class="tag">Automotive Ethernet</span><span class="tag">JIRA</span><span class="tag">RTC</span><span class="tag">Git</span><span class="tag">Confluence</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="section-head"><span class="kicker">02 / Selected Work</span><h2>Turning engineering effort into outcomes.</h2><p>A selection of automation and validation contributions across the ADAS software lifecycle.</p></div>
+  <div class="project-grid">
+    <article class="project"><div class="project-top"><span class="project-index">PROJECT 01</span><span class="project-metric">75%</span></div><h3>YAML-driven SIL test generation</h3><p>Created a YAML-based code generator to streamline repetitive SIL test-script creation across ADAS features, improving consistency and reducing manual scripting effort.</p><div class="project-tags"><span>Python</span><span>YAML</span><span>SIL</span><span>Test Automation</span></div></article>
+    <article class="project"><div class="project-top"><span class="project-index">PROJECT 02</span><span class="project-metric">80%</span></div><h3>Scenario regression automation</h3><p>Automated 15+ driving scenarios—including highway merges, pedestrian crossings, and emergency braking—to reduce regression runtime and manual execution effort.</p><div class="project-tags"><span>Python</span><span>Scenario Testing</span><span>Regression</span><span>Simulation</span></div></article>
+    <article class="project"><div class="project-top"><span class="project-index">PROJECT 03</span><span class="project-metric">1,200+</span></div><h3>Real-vehicle ADAS data analysis</h3><p>Analyzed active safety defects against vehicle data, inspected signal behavior, and supported root-cause investigation across multiple ADAS functions.</p><div class="project-tags"><span>CAN / CAN-FD</span><span>Signal Analysis</span><span>Defect Triage</span></div></article>
+    <article class="project"><div class="project-top"><span class="project-index">PROJECT 04</span><span class="project-metric">100%</span></div><h3>Unit-test coverage improvement</h3><p>Integrated a CPPU unit-test framework for active safety modules and improved coverage from 55% to 100%, supporting structured requirement verification.</p><div class="project-tags"><span>CPPU</span><span>C / C++</span><span>MISRA-C</span><span>Traceability</span></div></article>
+  </div>
+  <p class="project-note">Client projects are described at a high level to respect confidentiality. Detailed technical discussions can be shared in an interview.</p>
+</section>
+
+<section id="experience">
+  <div class="section-head"><span class="kicker">03 / Experience</span><h2>Experience across the validation lifecycle.</h2><p>Tata Consultancy Services · General Motors program</p></div>
+  <div class="timeline">
+    <article class="experience-card">
+      <button class="role-toggle" aria-expanded="true" aria-controls="exp1"><span><span class="role-title">ADAS Software Test Engineer — Active Safety</span><span class="role-company">Tata Consultancy Services · General Motors · Bengaluru</span></span><span class="role-date">Feb 2026 – Present <span class="chevron">⌄</span></span></button>
+      <div class="role-content" id="exp1"><ul>
+        <li>Maintain requirement traceability across ADAS active safety modules by deriving unit-level test cases from software and system requirements.</li>
+        <li>Apply ISO 26262-aligned verification methods and track requirements and test evidence through engineering tools.</li>
+        <li>Improved unit-test coverage from <strong>55% to 100%</strong> through CPPU framework integration using Embedded C/C++.</li>
+        <li>Raised first-pass defect closure to <strong>95%</strong> through root-cause and failure analysis with algorithm and embedded software teams, supported by functional, regression, and black-box test evidence.</li>
+      </ul></div>
+    </article>
+    <article class="experience-card">
+      <button class="role-toggle" aria-expanded="true" aria-controls="exp2"><span><span class="role-title">SIL Validation Engineer — Active Safety</span><span class="role-company">Tata Consultancy Services · General Motors · Bengaluru</span></span><span class="role-date">Sep 2024 – Feb 2026 <span class="chevron">⌄</span></span></button>
+      <div class="role-content" id="exp2"><ul>
+        <li>Validated AEB, ACC, LKA, LCC, TSA, FCA, CIB, and EBA using <strong>2,000+ SIL test scripts</strong>.</li>
+        <li>Reduced script-creation effort by <strong>75%</strong> through a YAML-based code-generation workflow.</li>
+        <li>Automated 15+ driving scenarios, reducing manual test effort by <strong>30%</strong> and regression runtime by <strong>80%</strong>.</li>
+        <li>Validated <strong>8 UDS services</strong> over CAN and CAN-TP, and closed <strong>12 defects</strong> across software releases by tracing failures to root cause and verifying fixes.</li>
+      </ul></div>
+    </article>
+    <article class="experience-card">
+      <button class="role-toggle" aria-expanded="true" aria-controls="exp3"><span><span class="role-title">Data Analysis Engineer — Active Safety</span><span class="role-company">Tata Consultancy Services · General Motors · Bengaluru</span></span><span class="role-date">Mar 2023 – Sep 2024 <span class="chevron">⌄</span></span></button>
+      <div class="role-content" id="exp3"><ul>
+        <li>Analyzed <strong>1,200+ defects</strong> against real-vehicle data across multiple active safety functions.</li>
+        <li>Prepared CAN/CAN-FD signal configurations and HIL test cases for steering-control validation.</li>
+        <li>Automated daily and weekly reports with Python, saving <strong>4+ hours per week</strong> and giving teams in China, Korea, and the US a shared view of status.</li>
+        <li>Standardized validation practices by training <strong>18 engineers</strong> across China, Korea, and the US.</li>
+      </ul></div>
+    </article>
+  </div>
+
+  <div class="credentials">
+    <div class="credential"><h3>Education</h3><p><strong>B.E. Electronics & Communication Engineering</strong><br>Dhirajlal Gandhi College of Technology<br>Anna University · 2022</p></div>
+    <div class="credential"><h3>Certifications</h3><ul><li>Microsoft Certified: Power BI Data Analyst Associate · Oct 2025</li><li>Automotive Embedded Systems Training, SmartCliff · Jan 2024</li><li>Claude Associate Foundation Certificate · Anthropic</li><li>E1 Competency · Generative AI focus</li></ul></div>
+    <div class="credential"><h3>Recognition</h3><ul><li>Star of the Month · Q1 2025</li><li>On the Spot Award · AEB validation release</li><li>Slide Master Award</li></ul></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-card">
+    <span class="kicker">04 / Contact</span>
+    <h2>Let’s make the next release safer.</h2>
+    <p>If you’re working on ADAS validation, automotive software quality, or test automation, I’d be glad to connect and discuss how I can contribute.</p>
+    <div class="contact-actions"><a class="btn btn-primary" href="Abrakham_A_Resume.pdf" download>Download resume ↓</a><a class="btn" href="https://www.linkedin.com/in/abrakham" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a><a class="btn" href="tel:+919087986118">Call +91 90879 86118</a></div>
+    <div class="email-line"><span class="email" id="email">abrakham9087@gmail.com</span><button class="btn copy" id="copyEmail" type="button">Copy email</button></div>
+  </div>
+</section>
+
+<footer><span>© <span id="year"></span> Abrakham A</span><span>ADAS Software Test Engineer · Bengaluru, India</span><a href="#top" style="color:var(--teal)">Back to top ↑</a></footer>
+</div>
+</main>
+<script>
+(() => {
+  "use strict";
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll(".role-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!expanded));
+      const panel = document.getElementById(button.getAttribute("aria-controls"));
+      panel.hidden = expanded;
+    });
+  });
+
+  const copyButton = document.getElementById("copyEmail");
+  const email = document.getElementById("email").textContent.trim();
+  copyButton.addEventListener("click", async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        const field = document.createElement("textarea");
+        field.value = email;
+        field.style.position = "fixed";
+        field.style.opacity = "0";
+        document.body.appendChild(field);
+        field.select();
+        const ok = document.execCommand("copy");
+        field.remove();
+        if (!ok) throw new Error("Copy failed");
+      }
+      copyButton.textContent = "Copied!";
+      copyButton.classList.add("copied");
+    } catch {
+      window.location.href = "mailto:" + email;
+      copyButton.textContent = "Open email app";
+    }
+    setTimeout(() => {
+      copyButton.textContent = "Copy email";
+      copyButton.classList.remove("copied");
+    }, 2200);
+  });
+
+  const counters = document.querySelectorAll("[data-count]");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animate(el) {
+    const target = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || "";
+    const start = performance.now();
+    const duration = 1100;
+    function frame(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString("en-US") + suffix;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!reduced && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold: .45});
+    counters.forEach(el => observer.observe(el));
+  }
+})();
+</script>
+</body>
+</html>
