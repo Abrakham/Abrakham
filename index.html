@@ -1,5 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0E14">
+<meta name="description" content="Abrakham A, ADAS Software Test Engineer in Bengaluru. SIL, unit and real-vehicle-data validation for ADAS active safety features.">
 <title>Abrakham A</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -58,7 +64,7 @@ body::after {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-.wrap { max-width: 1040px; margin: 0 auto; }
+.wrap { max-width: 1120px; margin: 0 auto; width: 100%; }
 h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
 p { margin: 0; }
 .mono { font-family: var(--font-mono); }
@@ -82,7 +88,7 @@ p { margin: 0; }
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-.nav-in { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav-in { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { font-family: var(--font-mono); font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 10px; }
 .brand:hover { text-decoration: none; }
 .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
@@ -95,7 +101,7 @@ p { margin: 0; }
 @media (max-width: 640px) { .nav-links a:not(.nav-cta) { display: none; } }
 
 /* Hero */
-.hero { position: relative; padding-block: 72px 56px; }
+.hero { position: relative; padding-block: 40px 48px; }
 .hero-glow {
   position: absolute;
   inset: -40px -16px auto -16px;
@@ -113,10 +119,10 @@ p { margin: 0; }
 .status .prompt { color: var(--accent); }
 #typed { transition: opacity 0.35s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hero h1 {
-  font-size: clamp(2.2rem, 6vw, 4.1rem);
+  font-size: clamp(2.1rem, 5vw, 3.5rem);
   line-height: 1.06;
   font-weight: 700;
-  margin-top: 26px;
+  margin-top: 16px;
   max-width: 17ch;
 }
 .hero h1 em {
@@ -140,7 +146,7 @@ p { margin: 0; }
 
 .stats {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px; margin-top: 56px;
+  gap: 1px; margin-top: 36px;
   background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
 }
 .stat { background: var(--surface); padding: 20px 22px; }
@@ -220,8 +226,9 @@ section { padding-block: 72px; scroll-margin-top: 56px; }
   .timeline { padding-left: 28px; }
   .role::before { left: -27px; }
 }
-.edu { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-@media (max-width: 760px) { .edu { grid-template-columns: minmax(0, 1fr); } }
+.edu { margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+@media (max-width: 900px) { .edu { grid-template-columns: minmax(0, 1fr); } }
+.role-line { margin-top: 18px; }
 .edu h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
 .edu ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--muted); }
 .edu li b { color: var(--text); font-weight: 500; }
@@ -249,6 +256,15 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
   .card, .btn, .tag { transition: none; }
 }
 </style>
+<style>
+html, body { margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
 
 <div class="wrap">
   <header class="nav" id="top">
@@ -267,6 +283,7 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
     <div class="hero" id="hero">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="status mono"><span class="prompt">&gt;</span><span id="typed">validating ADAS on real vehicle data</span></div>
+      <p class="eyebrow role-line">ADAS Software Test Engineer &middot; TCS for General Motors</p>
       <h1>I make ADAS software <em>prove it is safe</em>, before it reaches the road.</h1>
       <p class="sub">ADAS Active Safety engineer with 3.5+ years validating AEB, ACC, LKA, LCC and more for General Motors at TCS. I write the automation, 2,000+ SIL scripts so far, and trace the defects that matter back to root cause.</p>
       <div class="ctas">
@@ -350,7 +367,7 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
       <div class="timeline">
         <article class="role reveal">
           <button class="role-btn" aria-expanded="true" aria-controls="r1">
-            <span><h3>Test Engineer, Active Safety</h3><span class="org">TCS, for General Motors</span></span>
+            <span><h3>ADAS Software Test Engineer, Active Safety</h3><span class="org">TCS, for General Motors</span></span>
             <span class="when">Feb 2026 – Present <span class="chev" aria-hidden="true">&#9662;</span></span>
           </button>
           <div class="role-body" id="r1"><ul>
@@ -373,7 +390,7 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
         </article>
         <article class="role reveal">
           <button class="role-btn" aria-expanded="true" aria-controls="r3">
-            <span><h3>Engineer, Active Safety Data Analysis</h3><span class="org">TCS, for General Motors</span></span>
+            <span><h3>Data Analysis Engineer, Active Safety</h3><span class="org">TCS, for General Motors</span></span>
             <span class="when">Mar 2023 – Sep 2024 <span class="chev" aria-hidden="true">&#9662;</span></span>
           </button>
           <div class="role-body" id="r3"><ul>
@@ -390,6 +407,11 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
           <li><b>Microsoft Power BI Data Analyst Associate</b> (Oct 2025)</li>
           <li><b>Automotive Embedded Systems</b>, SmartCliff (Jan 2024)</li>
           <li><b>Claude Associate Foundation</b>, Anthropic</li>
+        </ul></div>
+        <div><h3>Recognition</h3><ul>
+          <li><b>Star of the Month</b> (Q1 2025), YAML code generator</li>
+          <li><b>On the Spot Award</b>, critical AEB validation release</li>
+          <li><b>Slide Master Award</b>, cross-functional reporting</li>
         </ul></div>
       </div>
     </section>
@@ -514,3 +536,6 @@ footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12p
   });
 })();
 </script>
+
+</body>
+</html>
