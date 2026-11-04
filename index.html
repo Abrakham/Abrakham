@@ -1,0 +1,516 @@
+<title>Abrakham A</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one long dark page, left-aligned hero with a metric strip, a project grid, then an expandable career timeline. Teal marks metrics and links only. */
+:root {
+  --bg: #0B0E14;
+  --surface: #131824;
+  --surface-2: #181F2E;
+  --border: #222B3D;
+  --text: #F2F5FA;
+  --muted: #9AA6BD;
+  --accent: #2DE2C8;
+  --accent-2: #4C8DFF;
+  --glow: rgba(45, 226, 200, 0.14);
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 30;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.18;
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding: 12px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(11, 14, 20, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-in { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { font-family: var(--font-mono); font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 10px; }
+.brand:hover { text-decoration: none; }
+.brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { color: var(--muted); font-size: 14px; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.on { color: var(--text); text-decoration: none; }
+.nav-links a.on { box-shadow: 0 2px 0 0 var(--accent); }
+.nav-cta { border: 1px solid var(--accent); color: var(--accent) !important; padding: 6px 14px; border-radius: 6px; }
+.nav-cta:hover { background: var(--glow); }
+@media (max-width: 640px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+/* Hero */
+.hero { position: relative; padding-block: 72px 56px; }
+.hero-glow {
+  position: absolute;
+  inset: -40px -16px auto -16px;
+  height: 520px;
+  background: radial-gradient(420px circle at var(--mx, 25%) var(--my, 30%), var(--glow), transparent 70%);
+  pointer-events: none;
+}
+.hero > *:not(.hero-glow) { position: relative; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  border: 1px solid var(--border); background: var(--surface);
+  padding: 6px 12px; border-radius: 999px; max-width: 100%;
+}
+.status .prompt { color: var(--accent); }
+#typed { transition: opacity 0.35s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.1rem);
+  line-height: 1.06;
+  font-weight: 700;
+  margin-top: 26px;
+  max-width: 17ch;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero .sub { color: var(--muted); font-size: clamp(1.02rem, 2vw, 1.2rem); max-width: 60ch; margin-top: 22px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; align-items: center; }
+.btn {
+  font-family: var(--font-body); font-weight: 500; font-size: 15px;
+  padding: 12px 22px; border-radius: 8px; border: 1px solid var(--border);
+  color: var(--text); background: var(--surface); cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: #04211D; border-color: var(--accent); font-weight: 600; }
+.btn.primary:hover { box-shadow: 0 6px 28px rgba(45, 226, 200, 0.35); }
+.textlink { font-size: 14px; color: var(--muted); padding: 12px 4px; }
+.textlink:hover { color: var(--accent); }
+
+.stats {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px; margin-top: 56px;
+  background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.stat { background: var(--surface); padding: 20px 22px; }
+.stat b {
+  display: block; font-family: var(--font-display); font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  font-weight: 700; color: var(--accent); line-height: 1.1; font-variant-numeric: tabular-nums;
+}
+.stat span { font-size: 13px; color: var(--muted); display: block; margin-top: 6px; }
+@media (max-width: 720px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Sections */
+section { padding-block: 72px; scroll-margin-top: 56px; }
+.sec-head { margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); margin-top: 10px; font-weight: 700; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; }
+@media (max-width: 860px) { .about { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+.about-copy { display: flex; flex-direction: column; gap: 18px; color: var(--muted); }
+.about-copy strong { color: var(--text); font-weight: 600; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.fact { font-family: var(--font-mono); font-size: 12px; color: var(--muted); border-left: 2px solid var(--accent); padding: 2px 10px; }
+.skills { display: flex; flex-direction: column; gap: 22px; }
+.skill-group h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-family: var(--font-mono); font-size: 13px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 5px 11px; border-radius: 6px; cursor: default;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
+}
+.tag:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 16px var(--glow); transform: translateY(-1px); }
+.tag small { color: var(--muted); font-size: 11px; }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .projects { grid-template-columns: minmax(0, 1fr); } }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(45, 226, 200, 0.55); box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4), 0 0 32px var(--glow); }
+.card .metric { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 700; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+.card .metric-label { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 8px; display: block; letter-spacing: 0.04em; }
+.card h3 { font-size: 1.25rem; font-weight: 700; }
+.card p { color: var(--muted); font-size: 15px; }
+.card .award { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+.card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.card li { font-family: var(--font-mono); font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 5px; padding: 3px 9px; }
+.card .note { font-family: var(--font-mono); font-size: 12px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 14px; }
+.conf { margin-top: 20px; font-size: 13px; color: var(--muted); max-width: 70ch; }
+
+/* Timeline */
+.timeline { position: relative; display: flex; flex-direction: column; gap: 20px; padding-left: 34px; }
+.timeline::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--border) 85%); }
+.role { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; min-width: 0; }
+.role::before {
+  content: ""; position: absolute; left: -33px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent); box-shadow: 0 0 12px var(--accent);
+}
+.role-btn {
+  width: 100%; text-align: left; background: none; border: 0; color: inherit; cursor: pointer;
+  padding: 22px 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font: inherit;
+}
+.role-btn h3 { font-size: 1.15rem; font-weight: 700; }
+.role-btn .org { color: var(--muted); font-size: 14px; display: block; margin-top: 2px; }
+.role-btn .when { font-family: var(--font-mono); font-size: 12px; color: var(--accent); white-space: nowrap; display: flex; align-items: center; gap: 12px; }
+.role-btn .chev { display: inline-block; transition: transform 0.25s; color: var(--muted); }
+.role-btn[aria-expanded="false"] .chev { transform: rotate(-90deg); }
+.role-body { padding: 0 24px 22px; }
+.role-body ul { margin: 0; padding-left: 18px; color: var(--muted); display: flex; flex-direction: column; gap: 9px; font-size: 15px; }
+.role-body li::marker { color: var(--accent); }
+.role-body b { color: var(--text); font-weight: 600; }
+@media (max-width: 560px) {
+  .role-btn { flex-direction: column; gap: 8px; }
+  .timeline { padding-left: 28px; }
+  .role::before { left: -27px; }
+}
+.edu { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .edu { grid-template-columns: minmax(0, 1fr); } }
+.edu h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.edu ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: var(--muted); }
+.edu li b { color: var(--text); font-weight: 500; }
+
+/* Contact */
+.contact {
+  border: 1px solid var(--border); border-radius: 18px; padding: clamp(28px, 6vw, 64px);
+  background: radial-gradient(600px circle at 85% 0%, var(--glow), transparent 65%), var(--surface);
+}
+.contact h2 { font-size: clamp(1.9rem, 4.4vw, 3rem); max-width: 20ch; font-weight: 700; margin-top: 12px; }
+.contact p.lead { color: var(--muted); max-width: 56ch; margin-top: 18px; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+.mail code { font-family: var(--font-mono); font-size: 15px; color: var(--text); background: var(--bg); border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; user-select: all; overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; font-family: var(--font-mono); font-size: 14px; }
+.links a { color: var(--muted); }
+.links a:hover { color: var(--accent); }
+footer { padding-block: 36px 48px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-top: 1px solid var(--border); margin-top: 72px; }
+
+/* Scroll reveal: starts partly visible, never hidden */
+.js .reveal { opacity: 0.45; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .card, .btn, .tag { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <header class="nav" id="top">
+    <div class="nav-in">
+      <a class="brand" href="#top"><span class="dot"></span>abrakham.a</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#about" data-s="about">About</a>
+        <a href="#projects" data-s="projects">Projects</a>
+        <a href="#experience" data-s="experience">Experience</a>
+        <a href="#contact" class="nav-cta">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero" id="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="status mono"><span class="prompt">&gt;</span><span id="typed">validating ADAS on real vehicle data</span></div>
+      <h1>I make ADAS software <em>prove it is safe</em>, before it reaches the road.</h1>
+      <p class="sub">ADAS Active Safety engineer with 3.5+ years validating AEB, ACC, LKA, LCC and more for General Motors at TCS. I write the automation, 2,000+ SIL scripts so far, and trace the defects that matter back to root cause.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#projects">View my projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="textlink" href="Abrakham_A_Resume.pdf" target="_blank" rel="noopener">Open resume (PDF) &rarr;</a>
+      </div>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><b data-count="2000" data-suffix="+">2,000+</b><span>SIL test scripts written</span></div>
+        <div class="stat" role="listitem"><b data-count="75" data-suffix="%">75%</b><span>less script-creation effort</span></div>
+        <div class="stat" role="listitem"><b data-count="1200" data-suffix="+">1,200+</b><span>defects analyzed on vehicle data</span></div>
+        <div class="stat" role="listitem"><b>55% &rarr; 100%</b><span>unit test coverage, CPPU</span></div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="sec-head reveal"><span class="eyebrow">About</span><h2>Validation that starts at the requirement and ends at the road.</h2></div>
+      <div class="about">
+        <div class="about-copy reveal">
+          <p><strong>What I do.</strong> I validate ADAS features from unit tests to simulation to real vehicle data, and I automate the repetitive parts so engineers can spend their time on the hard failures.</p>
+          <p><strong>How I work.</strong> I start from requirements and traceability, then use Python and YAML to scale the testing. When a feature misbehaves, I follow the evidence from logs and vehicle data to root cause, and report it clearly to the algorithm and embedded teams.</p>
+          <p><strong>Where I am headed.</strong> From SIL and unit-level validation into system-level ADAS testing, with more hands-on HIL and vehicle-level work.</p>
+          <div class="facts">
+            <span class="fact">Bengaluru, India</span>
+            <span class="fact">TCS for General Motors</span>
+            <span class="fact">ISO 26262</span>
+            <span class="fact">Trains teams in China, Korea, US</span>
+          </div>
+        </div>
+        <div class="skills reveal">
+          <div class="skill-group"><h3>ADAS and safety</h3><div class="tags">
+            <span class="tag">AEB</span><span class="tag">ACC</span><span class="tag">LKA</span><span class="tag">LCC</span><span class="tag">TSA</span><span class="tag">FCA</span><span class="tag">CIB</span><span class="tag">EBA</span><span class="tag">ISO 26262</span><span class="tag">ASIL</span></div></div>
+          <div class="skill-group"><h3>Test and automation</h3><div class="tags">
+            <span class="tag">Python</span><span class="tag">YAML code generation</span><span class="tag">SIL</span><span class="tag">Regression testing</span><span class="tag">Requirement traceability</span><span class="tag">CPPU unit testing</span></div></div>
+          <div class="skill-group"><h3>HIL and simulation</h3><div class="tags">
+            <span class="tag">HIL test cases</span><span class="tag">dSPACE <small>(exposure)</small></span><span class="tag">Applied Intuition Object Sim</span><span class="tag">CarMaker</span><span class="tag">CarSim</span><span class="tag">RoadRunner</span></div></div>
+          <div class="skill-group"><h3>Networks and diagnostics</h3><div class="tags">
+            <span class="tag">CAN</span><span class="tag">CAN-FD</span><span class="tag">CAN-TP</span><span class="tag">UDS</span><span class="tag">LIN</span><span class="tag">Automotive Ethernet</span></div></div>
+          <div class="skill-group"><h3>Embedded software</h3><div class="tags">
+            <span class="tag">C</span><span class="tag">C++</span><span class="tag">Embedded C</span><span class="tag">MISRA-C</span><span class="tag">AUTOSAR (Classic)</span><span class="tag">MATLAB/Simulink <small>(basic)</small></span></div></div>
+          <div class="skill-group"><h3>Tools and process</h3><div class="tags">
+            <span class="tag">JIRA</span><span class="tag">RTC</span><span class="tag">PRTS</span><span class="tag">Confluence</span><span class="tag">Git</span><span class="tag">Eclipse</span><span class="tag">PDCA</span><span class="tag">LEAN</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sec-head reveal"><span class="eyebrow">Selected work</span><h2>Four pieces of validation work, with the numbers.</h2></div>
+      <div class="projects">
+        <article class="card reveal">
+          <div><div class="metric">75%</div><span class="metric-label">LESS SIL SCRIPTING EFFORT</span></div>
+          <h3>YAML Code Generator</h3>
+          <p>Writing SIL test scripts by hand was slow and repetitive across ADAS features. A YAML-driven generator now produces them, cutting script-creation effort by 75%.</p>
+          <span class="award">Star of the Month, Q1 2025</span>
+          <ul aria-label="Tech stack"><li>Python</li><li>YAML</li><li>Applied Intuition Object Sim</li><li>Eclipse</li></ul>
+        </article>
+        <article class="card reveal">
+          <div><div class="metric">80%</div><span class="metric-label">SHORTER REGRESSION RUNS</span></div>
+          <h3>Python Scenario Automation</h3>
+          <p>Manual runs of common driving situations were eating validation time. Python scripts now cover 15+ scenarios (highway merges, pedestrian crossings, emergency braking), cutting manual test effort by 30%.</p>
+          <ul aria-label="Tech stack"><li>Python</li><li>Applied Intuition Object Sim</li><li>SIL</li><li>CAN</li></ul>
+        </article>
+        <article class="card reveal">
+          <div><div class="metric">1,200+</div><span class="metric-label">DEFECTS ANALYZED</span></div>
+          <h3>Real-Vehicle ADAS Verification</h3>
+          <p>ADAS features can behave differently on the road than in simulation. I verified behavior against real vehicle data across FCA, ACC, LCoD, ALC, CIB, AEB, EBA and Ped Alert, ran root cause analysis and reported deviations to the client.</p>
+          <ul aria-label="Tech stack"><li>CAN / CAN-FD signals</li><li>Python</li><li>Root cause analysis</li></ul>
+        </article>
+        <article class="card reveal">
+          <div><div class="metric">55% &rarr; 100%</div><span class="metric-label">UNIT TEST COVERAGE</span></div>
+          <h3>CPPU Unit Test Integration</h3>
+          <p>Active safety modules needed stronger unit-level coverage. Integrating the CPPU framework raised it from 55% to 100%, with requirement traceability held at 100%.</p>
+          <ul aria-label="Tech stack"><li>CPPU</li><li>Embedded C/C++</li><li>MISRA-C</li><li>JIRA</li><li>RTC</li><li>PRTS</li></ul>
+        </article>
+      </div>
+      <p class="conf reveal">This is client work, so I describe the method and the results and leave out program data and internal tooling. Longer walkthroughs are available on request.</p>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head reveal"><span class="eyebrow">Experience</span><h2>Three roles at TCS, all in Active Safety.</h2></div>
+      <div class="timeline">
+        <article class="role reveal">
+          <button class="role-btn" aria-expanded="true" aria-controls="r1">
+            <span><h3>Test Engineer, Active Safety</h3><span class="org">TCS, for General Motors</span></span>
+            <span class="when">Feb 2026 – Present <span class="chev" aria-hidden="true">&#9662;</span></span>
+          </button>
+          <div class="role-body" id="r1"><ul>
+            <li>Maintained <b>100%</b> requirement traceability across ADAS active safety modules under ISO 26262-aligned methods.</li>
+            <li>Raised unit test coverage from <b>55% to 100%</b> by integrating the CPPU framework (Embedded C/C++, MISRA-C).</li>
+            <li>Raised first-pass defect closure to <b>95%</b> through root cause analysis with algorithm and embedded teams.</li>
+          </ul></div>
+        </article>
+        <article class="role reveal">
+          <button class="role-btn" aria-expanded="true" aria-controls="r2">
+            <span><h3>SIL Validation Engineer, Active Safety</h3><span class="org">TCS, for General Motors</span></span>
+            <span class="when">Sep 2024 – Feb 2026 <span class="chev" aria-hidden="true">&#9662;</span></span>
+          </button>
+          <div class="role-body" id="r2"><ul>
+            <li>Validated 8 ADAS features with <b>2,000+</b> test scripts covering functional and edge cases.</li>
+            <li>Cut script-creation effort by <b>75%</b> with a YAML-based code generator.</li>
+            <li>Cut manual test effort by <b>30%</b> and regression run time by <b>80%</b> with Python scenario scripts.</li>
+            <li>Validated <b>8</b> UDS services over CAN and CAN-TP, and closed <b>12</b> defects across releases.</li>
+          </ul></div>
+        </article>
+        <article class="role reveal">
+          <button class="role-btn" aria-expanded="true" aria-controls="r3">
+            <span><h3>Engineer, Active Safety Data Analysis</h3><span class="org">TCS, for General Motors</span></span>
+            <span class="when">Mar 2023 – Sep 2024 <span class="chev" aria-hidden="true">&#9662;</span></span>
+          </button>
+          <div class="role-body" id="r3"><ul>
+            <li>Analyzed <b>1,200+</b> defects against real vehicle data across FCA, ACC, LCoD, ALC, CIB, AEB, EBA and Ped Alert.</li>
+            <li>Enabled HIL steering-control validation by building CAN/CAN-FD signal CGs and preparing HIL test cases.</li>
+            <li>Saved <b>4+ hours a week</b> by automating daily and weekly reports in Python.</li>
+            <li>Trained <b>18</b> engineers in China, Korea and the US.</li>
+          </ul></div>
+        </article>
+      </div>
+      <div class="edu reveal">
+        <div><h3>Education</h3><ul><li><b>B.E., Electronics and Communication Engineering</b><br>Dhirajlal Gandhi College of Technology (Anna University), 2022</li></ul></div>
+        <div><h3>Certifications</h3><ul>
+          <li><b>Microsoft Power BI Data Analyst Associate</b> (Oct 2025)</li>
+          <li><b>Automotive Embedded Systems</b>, SmartCliff (Jan 2024)</li>
+          <li><b>Claude Associate Foundation</b>, Anthropic</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Building or validating ADAS? Let us talk.</h2>
+        <p class="lead">I am open to system test and ADAS validation roles where safety, automation and real vehicle data meet.</p>
+        <div class="mail">
+          <code id="email">abrakham9087@gmail.com</code>
+          <button class="btn primary" id="copy" type="button">Copy email</button>
+        </div>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/abrakham" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+          <!-- Add when you have a public repo: <a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub &nearr;</a> -->
+          <a href="Abrakham_A_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) &nearr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>&copy; 2026 Abrakham A</span><span>Bengaluru, India</span></footer>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("js");
+
+  // Scroll reveal
+  var rev = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    rev.forEach(function (el) { io.observe(el); });
+    setTimeout(function () { rev.forEach(function (el) { el.classList.add("in"); }); }, 4000);
+  } else {
+    rev.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  // Count-up for hero stats
+  function fmt(n) { return n.toLocaleString("en-US"); }
+  var counts = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window && !reduce) {
+    var co = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        co.unobserve(e.target);
+        var el = e.target, end = +el.dataset.count, suf = el.dataset.suffix || "", t0 = null;
+        function step(t) {
+          if (t0 === null) t0 = t;
+          var p = Math.min((t - t0) / 1100, 1), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+          el.textContent = fmt(v) + suf;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    counts.forEach(function (el) { co.observe(el); });
+  }
+
+  // Rotating status line
+  var typed = document.getElementById("typed");
+  var lines = ["validating ADAS on real vehicle data", "tracing defects to root cause", "automating SIL with Python and YAML", "checking AEB, ACC, LKA and LCC behavior"];
+  if (!reduce) {
+    var i = 0;
+    setInterval(function () {
+      typed.style.opacity = 0;
+      setTimeout(function () { i = (i + 1) % lines.length; typed.textContent = lines[i]; typed.style.opacity = 1; }, 350);
+    }, 3600);
+  }
+
+  // Hero glow follows the pointer
+  var hero = document.getElementById("hero");
+  if (!reduce && hero) {
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      hero.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  }
+
+  // Timeline toggles
+  document.querySelectorAll(".role-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var open = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", open ? "false" : "true");
+      document.getElementById(b.getAttribute("aria-controls")).hidden = open;
+    });
+  });
+
+  // Active nav link
+  var links = {};
+  document.querySelectorAll("[data-s]").forEach(function (a) { links[a.dataset.s] = a; });
+  if ("IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.toggle("on", k === e.target.id); });
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["about", "projects", "experience"].forEach(function (id) { var s = document.getElementById(id); if (s) so.observe(s); });
+  }
+
+  // Copy email
+  var btn = document.getElementById("copy"), em = document.getElementById("email");
+  btn.addEventListener("click", function () {
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(em);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Selected, press copy";
+    }
+    try {
+      navigator.clipboard.writeText(em.textContent).then(function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy email"; }, 2000);
+      }, selectIt);
+    } catch (err) { selectIt(); }
+  });
+})();
+</script>
